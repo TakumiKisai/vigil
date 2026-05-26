@@ -2,396 +2,146 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" c"width=device-width, initial-scale=1.0">
-  <title>help me</title>
-  
-  <!-- Style Block for animations, backgrounds, and liquid glass styles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>help mer</title>
+
   <style>
-    /* Full-screen dark container locked down for previewing contrast */
     body {
-      background-color: #0d0d0e; 
+      background-color: #0d0d0e;
       margin: 0;
       padding: 40px 20px;
       min-height: 100vh;
-      box-sizing: border-box;
       display: flex;
-      flex-direction: column;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
+      font-family: Arial, sans-serif;
     }
 
-    @keyframes pulseGlow {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(252, 194, 215, 0.4);
-      }
-      50% {
-        transform: scale(1.02);
-        box-shadow: 0 0 20px 8px rgba(252, 194, 215, 0.35);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(252, 194, 215, 0);
-      }
-    }
-
-    /* Dark Plum Liquid Glass Style */
+    /* ===== CARD ===== */
     .liquid-glass-card {
-      background: linear-gradient(
-        145px, 
-        rgba(38, 30, 34, 0.88) 0%, 
-        rgba(20, 16, 18, 0.94) 50%, 
-        rgba(10, 8, 9, 0.98) 100%
-      );
-      backdrop-filter: blur(30px) saturate(140%);
-      -webkit-backdrop-filter: blur(30px) saturate(140%);
-      border: 1px solid rgba(252, 194, 215, 0.22); 
-      box-shadow: 
-        inset 0 1px 3px rgba(255, 255, 255, 0.15), 
-        inset 0 -3px 20px rgba(0, 0, 0, 0.7),
-        0px 20px 45px rgba(0, 0, 0, 0.8),
-        0px 0px 35px 5px rgba(252, 194, 215, 0.12);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       width: 100%;
-      max-width: 360px;
-      margin: 0 auto;
-      border-radius: 55px;
-      box-sizing: border-box;
-      color: #ffffff;
-      position: relative;
-      overflow: hidden;
+      max-width: 380px;
+      background: linear-gradient(145deg, #1a1a1d, #0f0f10);
+      border-radius: 28px;
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      color: white;
+      margin-bottom: 18px;
+      transition: 0.25s ease;
     }
 
-    /* Soft pink sheen effect */
-    .liquid-glass-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 40%;
-      background: linear-gradient(to bottom, rgba(252, 194, 215, 0.08) 0%, rgba(252, 194, 215, 0) 100%);
-      pointer-events: none;
+    .liquid-glass-card:hover {
+      border: 1px solid rgba(252,194,215,0.55);
+      box-shadow: 0 0 18px rgba(252,194,215,0.15);
+      transform: translateY(-2px);
     }
 
-    /* Row layout transformed into an anchor-friendly block */
+    /* ===== ROW ===== */
     .leaderboard-row {
       display: grid;
       grid-template-columns: 165px 1fr;
-      align-items: center; 
-      gap: 15px; 
-      transition: all 0.3s ease;
-      cursor: pointer;
-      padding: 15px 10px; 
-      border-radius: 42px;
-      text-decoration: none; 
-      color: inherit;
-    }
-
-    .leaderboard-row:hover {
-      animation: pulseGlow 1.5s infinite ease-in-out;
-      background: rgba(252, 194, 215, 0.08);
-    }
-
-    /* Single-graphic layout engine wrapper */
-    .text-container {
-      display: block;
-      line-height: 0;
-    }
-
-    .spotify-pulse {
-      transition: all 0.3s ease;
-    }
-
-    .spotify-pulse:hover {
-      animation: pulseGlow 1.5s infinite ease-in-out;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- ================= CARD 1: LEADERBOARD ================= -->
-  <div class="liquid-glass-card" style="padding: 35px 18px;">
-
-    <!-- Header Section with Image Font -->
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" c"width=device-width, initial-scale=1.0">
-  <title>Leaderboard Preview</title>
-  
-  <!-- Style Block for animations, backgrounds, and liquid glass styles -->
-  <style>
-    /* Full-screen dark container locked down for previewing contrast */
-    body {
-      background-color: #0d0d0e; 
-      margin: 0;
-      padding: 40px 20px;
-      min-height: 100vh;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-    }
-
-    @keyframes pulseGlow {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(252, 194, 215, 0.4);
-      }
-      50% {
-        transform: scale(1.02);
-        box-shadow: 0 0 20px 8px rgba(252, 194, 215, 0.35);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(252, 194, 215, 0);
-      }
-    }
-
-    /* Dark Plum Liquid Glass Style */
-    .liquid-glass-card {
-      background: linear-gradient(
-        145px, 
-        rgba(38, 30, 34, 0.88) 0%, 
-        rgba(20, 16, 18, 0.94) 50%, 
-        rgba(10, 8, 9, 0.98) 100%
-      );
-      backdrop-filter: blur(30px) saturate(140%);
-      -webkit-backdrop-filter: blur(30px) saturate(140%);
-      border: 1px solid rgba(252, 194, 215, 0.22); 
-      box-shadow: 
-        inset 0 1px 3px rgba(255, 255, 255, 0.15), 
-        inset 0 -3px 20px rgba(0, 0, 0, 0.7),
-        0px 20px 45px rgba(0, 0, 0, 0.8),
-        0px 0px 35px 5px rgba(252, 194, 215, 0.12);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      width: 100%;
-      max-width: 360px;
-      margin: 0 auto;
-      border-radius: 55px;
-      box-sizing: border-box;
-      color: #ffffff;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Soft pink sheen effect */
-    .liquid-glass-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 40%;
-      background: linear-gradient(to bottom, rgba(252, 194, 215, 0.08) 0%, rgba(252, 194, 215, 0) 100%);
-      pointer-events: none;
-    }
-
-    /* Row layout transformed into an anchor-friendly block */
-    .leaderboard-row {
-      display: grid;
-      grid-template-columns: 165px 1fr;
-      align-items: center; 
-      gap: 15px; 
-      transition: all 0.3s ease;
-      cursor: pointer;
-      padding: 15px 10px; 
-      border-radius: 42px;
-      text-decoration: none; 
+      gap: 12px;
+      padding: 10px;
+      border-radius: 18px;
+      text-decoration: none;
       color: inherit;
+      transition: 0.2s ease;
     }
 
     .leaderboard-row:hover {
-      animation: pulseGlow 1.5s infinite ease-in-out;
-      background: rgba(252, 194, 215, 0.08);
+      background: rgba(252,194,215,0.06);
     }
 
-    /* Single-graphic layout engine wrapper */
-    .text-container {
-      display: block;
-      line-height: 0;
+    /* ===== IMAGES ===== */
+    .avatar {
+      width: 165px;
+      height: 165px;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
-    .spotify-pulse {
-      transition: all 0.3s ease;
+    .name-img {
+      width: 100%;
+      max-height: 120px;
+      object-fit: contain;
     }
 
-    .spotify-pulse:hover {
-      animation: pulseGlow 1.5s infinite ease-in-out;
+    /* ===== SPOTIFY ===== */
+    .spotify-cover {
+      width: 260px;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.1);
     }
+
+    .spotify-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
   </style>
 </head>
+
 <body>
 
-  <!-- ================= CARD 1: LEADERBOARD ================= -->
-  <div class="liquid-glass-card" style="padding: 35px 18px;">
+  <!-- ================= LEADERBOARD CARD ================= -->
+  <div class="liquid-glass-card">
 
-    <!-- Header Section with Image Font -->
-    <div style="text-align: center; margin-bottom: 25px; position: relative; z-index: 1;">
-      <div style="margin: 5px 0;">
-        <img src="top_chads_header.png" alt="* Top Chads *" style="max-width: 90%; height: auto; display: inline-block; vertical-align: middle;">
-      </div>
+    <!-- HEADER -->
+    <div style="text-align:center; margin-bottom:15px;">
+      <img src="header.png" style="max-width:90%;">
     </div>
 
-    <!-- Leaderboard List -->
-    <div style="display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 1;">
+    <!-- ROWS -->
+    <a class="leaderboard-row" href="https://tiktok.com">
+      <img class="avatar" src="Zeta.png">
+      <img class="name-img" src="zeta1.png">
+    </a>
 
-      <!-- Rank 1 -->
-      <a href="https://www.tiktok.com/@zeta.psl?_r=1&_t=ZT-96fB9SUEgFJ" target="_blank" class="leaderboard-row">
-        <img src="1.png" alt="Zeta" style="width: 165px; height: 165px; border-radius: 42px; border: 2px solid rgba(252, 194, 215, 0.7); object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-        <div class="text-container">
-          <img src="name1.png" alt="1. Zeta" style="width: 100%; height: auto; max-height: 130px; object-fit: contain;">
-        </div>
-      </a>
+    <a class="leaderboard-row" href="https://tiktok.com">
+      <img class="avatar" src="vmog.png">
+      <img class="name-img" src="vmog1.png">
+    </a>
 
-      <!-- Rank 2 -->
-      <a href="https://www.tiktok.com/@humblemogger?_r=1&_t=ZT-96fBAOaZ4zF" target="_blank" class="leaderboard-row">
-        <img src="2.png" alt="vmog" style="width: 165px; height: 165px; border-radius: 42px; border: 2px solid rgba(252, 194, 215, 0.7); object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-        <div class="text-container">
-          <img src="name2.png" alt="2. vmog" style="width: 100%; height: auto; max-height: 130px; object-fit: contain;">
-        </div>
-      </a>
+    <a class="leaderboard-row" href="https://tiktok.com">
+      <img class="avatar" src="Derb.png">
+      <img class="name-img" src="derb1.png">
+    </a>
 
-      <!-- Rank 3 -->
-      <a href="https://www.tiktok.com/@derbforprez?_r=1&_t=ZT-96fB9WYFrmn" target="_blank" class="leaderboard-row">
-        <img src="3.png" alt="Derb" style="width: 165px; height: 165px; border-radius: 42px; border: 2px solid rgba(252, 194, 215, 0.7); object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-        <div class="text-container">
-          <img src="name3.png" alt="3. Derb" style="width: 100%; height: auto; max-height: 130px; object-fit: contain;">
-        </div>
-      </a>
+    <a class="leaderboard-row" href="https://tiktok.com">
+      <img class="avatar" src="Clav.png">
+      <img class="name-img" src="clav1.png">
+    </a>
 
-      <!-- Rank 4 -->
-      <a href="https://www.tiktok.com/@clavicular?_r=1&_t=ZT-96fBA5sDmGL" target="_blank" class="leaderboard-row">
-        <img src="4.png" alt="Clav" style="width: 165px; height: 165px; border-radius: 42px; border: 2px solid rgba(252, 194, 215, 0.7); object-fit: cover; flex-shrink: 0; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-        <div class="text-container">
-          <img src="name4.png" alt="4. Clav" style="width: 100%; height: auto; max-height: 130px; object-fit: contain;">
-        </div>
-      </a>
+    <a class="leaderboard-row" href="https://tiktok.com">
+      <img class="avatar" src="C.K.png">
+      <img class="name-img" src="C.K1.png">
+    </a>
 
-      <!-- Rank 5 -->
-      <a href="https://www.tiktok.com/@unbancookie?_r=1&_t=ZT-96fBIRgn1Hq" target="_blank" class="leaderboard-row">
-        <img src="5.png" alt="C. R." style="width: 165px; height: 165px; border-radius: 42px; border: 2px solid rgba(252, 194, 215, 0.7); object-fit: cover; flex-shrink: 0; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-        <div class="text-container">
-          <img src="name5.png" alt="5. C. K." style="width: 100%; height: auto; max-height: 130px; object-fit: contain;">
-        </div>
-      </a>
-
-    </div>
   </div>
 
-  <!-- SPACE BETWEEN CARDS -->
-  <div style="height: 20px; font-size: 1px; line-height: 1px;">&nbsp;</div>
+  <!-- ================= SPOTIFY CARD ================= -->
+  <div class="liquid-glass-card" style="text-align:center;">
 
-  <!-- ================= CARD 2: SPOTIFY PLAYLIST ================= -->
-  <div class="liquid-glass-card" style="padding: 30px 20px; text-align: center;">
-
-    <!-- Header Section with the new 7.png image asset -->
-    <div style="margin-bottom: 20px; position: relative; z-index: 1;">
-      <img src="7.png" alt="BP Playlist" style="max-width: 85%; height: auto; display: inline-block; vertical-align: middle;">
+    <div style="margin-bottom:15px;">
+      <img src="7.png" style="max-width:85%;">
     </div>
 
-    <!-- Linked Image Area -->
-    <div style="margin-bottom: 15px; position: relative; z-index: 1;">
-      <a href="https://open.spotify.com/playlist/1Il367YYJIwXrlpR7F0pPT?si=26aKOx0iS6GqEu6kQwI7Og&pi=FNFxcGwRTomYc" target="_blank" class="spotify-pulse" style="display: inline-block; text-decoration: none; border-radius: 32px; overflow: hidden; border: 2px solid rgba(252, 194, 215, 0.7); box-shadow: 0 8px 20px rgba(0,0,0,0.4);">
-        <img src="mikami.webp" alt="Playlist Cover" style="width: 260px; height: 260px; display: block; object-fit: cover;">
+    <div class="spotify-wrap">
+      <a href="https://open.spotify.com" target="_blank">
+        <img class="spotify-cover" src="mikami.webp">
       </a>
     </div>
 
-    <!-- Footer Credit Text -->
-    <div style="font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 0.5px; position: relative; z-index: 1;">
+    <p style="font-size:12px; opacity:0.5; margin-top:10px;">
       by @svdstmusic
-    </div>
+    </p>
 
   </div>
 
 </body>
 </html>
-    
- <!-- ================= CARD 1: LEADERBOARD ================= -->
-  <div class="liquid-glass-card" style="padding: 35px 18px;">
-    
- <!-- Header Section with Image Font -->
-    <div style="text-align: center; margin-bottom: 25px; position: relative; z-index: 1;">
-      <div style="margin: 5px 0;">
-        <img src="header.png" alt="* Top Chads *" style="max-width: 90%; height: auto; display: inline-block; vertical-align: middle;">
-      </div>
-    </div>   
-
-    <!-- Leaderboard List -->
-    <div style="display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 1;">
-
-      <!-- Rank 1 -->
-      <a href="https://www.tiktok.com/@zeta.psl?_r=1&_t=ZT-96fB9SUEgFJ" target="_blank" class="leaderboard-row">
-        <img src="Zeta.png" alt="Zeta" style="width: 165px; height: 165px; border-radius: 42px; border: 2px solid rgba(252, 194, 215, 0.7); object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-        <div class="text-container">
-          <img src="zeta1.png" alt="1. Zeta" style="width: 100%; height: auto; max-height: 130px; object-fit: contain;">
-        </div>
-      </a>
-
-      <!-- Rank 2 -->
-      <a href="https://www.tiktok.com/@humblemogger?_r=1&_t=ZT-96fBAOaZ4zF" target="_blank" class="leaderboard-row">
-        <img src="vmog.png" alt="vmog" style="width: 165px; height: 165px; border-radius: 42px; border: 2px solid rgba(252, 194, 215, 0.7); object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-        <div class="text-container">
-          <img src="vmog1.png" alt="2. vmog" style="width: 100%; height: auto; max-height: 130px; object-fit: contain;">
-        </div>
-      </a>
-
-      <!-- Rank 3 -->
-      <a href="https://www.tiktok.com/@derbforprez?_r=1&_t=ZT-96fB9WYFrmn" target="_blank" class="leaderboard-row">
-        <img src="Derb.png" alt="Derb" style="width: 165px; height: 165px; border-radius: 42px; border: 2px solid rgba(252, 194, 215, 0.7); object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-        <div class="text-container">
-          <img src="derb1.png" alt="3. Derb" style="width: 100%; height: auto; max-height: 130px; object-fit: contain;">
-        </div>
-      </a>
-
-      <!-- Rank 4 -->
-      <a href="https://www.tiktok.com/@clavicular?_r=1&_t=ZT-96fBA5sDmGL" target="_blank" class="leaderboard-row">
-        <img src="Clav.png" alt="Clav" style="width: 165px; height: 165px; border-radius: 42px; border: 2px solid rgba(252, 194, 215, 0.7); object-fit: cover; flex-shrink: 0; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-        <div class="text-container">
-          <img src="clav1.png" alt="4. Clav" style="width: 100%; height: auto; max-height: 130px; object-fit: contain;">
-        </div>
-      </a>
-
-      <!-- Rank 5 -->
-      <a href="https://www.tiktok.com/@unbancookie?_r=1&_t=ZT-96fBIRgn1Hq" target="_blank" class="leaderboard-row">
-        <img src="C.K.png" alt="C. R." style="width: 165px; height: 165px; border-radius: 42px; border: 2px solid rgba(252, 194, 215, 0.7); object-fit: cover; flex-shrink: 0; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-        <div class="text-container">
-          <img src="C.K1.png" alt="5. C. K." style="width: 100%; height: auto; max-height: 130px; object-fit: contain;">
-        </div>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- SPACE BETWEEN CARDS -->
-  <div style="height: 20px; font-size: 1px; line-height: 1px;">&nbsp;</div>
-
-  <!-- ================= CARD 2: SPOTIFY PLAYLIST ================= -->
-  <div class="liquid-glass-card" style="padding: 30px 20px; text-align: center;">
-
-    <!-- Header Section but why u reading ts pmo icl -->
-    <div style="margin-bottom: 20px; position: relative; z-index: 1;">
-      <img src="7.png" alt="BP Playlist" style="max-width: 85%; height: auto; display: inline-block; vertical-align: middle;">
-    </div>
-
-    <!-- Linked Image Area -->
-    <div style="margin-bottom: 15px; position: relative; z-index: 1;">
-      <a href="https://open.spotify.com/playlist/1Il367YYJIwXrlpR7F0pPT?si=26aKOx0iS6GqEu6kQwI7Og&pi=FNFxcGwRTomYc" target="_blank" class="spotify-pulse" style="display: inline-block; text-decoration: none; border-radius: 32px; overflow: hidden; border: 2px solid rgba(252, 194, 215, 0.7); box-shadow: 0 8px 20px rgba(0,0,0,0.4);">
-        <img src="whoisthis.webp" alt="Playlist Cover" style="width: 260px; height: 260px; display: block; object-fit: cover;">
-      </a>
-    </div>
-
-    <!-- Footer Credit Text -->
-    <div style="font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 0.5px; position: relative; z-index: 1;">
-      by @svdstmusic
-    </div>
-
-  </div>
-
-</body>
-</html>
-
-    
