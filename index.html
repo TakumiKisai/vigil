@@ -18,24 +18,77 @@
     }
 
     /* ================= CARD ================= */
-    .liquid-glass-card {
-      width: 100%;
-      max-width: 380px;
-      background: linear-gradient(145deg, #1a1a1d, #0f0f10);
-      border-radius: 28px;
-      padding: 20px;
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-      color: white;
-      margin-bottom: 18px;
-      transition: 0.25s ease;
-    }
+.liquid-glass-card {
+  width: 100%;
+  max-width: 380px;
 
-    .liquid-glass-card:hover {
-      border: 1px solid rgba(252,194,215,0.55);
-      box-shadow: 0 0 18px rgba(252,194,215,0.15);
-      transform: translateY(-2px);
-    }
+  position: relative;
+  border-radius: 28px;
+
+  padding: 20px;
+  margin-bottom: 18px;
+
+  color: white;
+
+  /* translucent center */
+  background: rgba(20, 20, 22, 0.60);
+
+  /* no normal border */
+  border: none;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+
+  overflow: hidden;
+
+  transition: 0.25s ease;
+}
+
+/* ================= GRADIENT BORDER (MAIN EFFECT) ================= */
+.liquid-glass-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 28px;
+
+  /* translucent → opaque gradient border */
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,0.18),
+    rgba(252,194,215,0.25),
+    rgba(0,0,0,0.35)
+  );
+
+  /* cut out center so only border shows */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  pointer-events: none;
+}
+
+/* ================= SOFT INNER DEPTH ================= */
+.liquid-glass-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+
+  background: radial-gradient(
+    circle at center,
+    rgba(255,255,255,0.05),
+    rgba(0,0,0,0.35)
+  );
+
+  pointer-events: none;
+}
+
+/* ================= HOVER EFFECT ================= */
+.liquid-glass-card:hover {
+  transform: translateY(-2px);
+} 
 
     /* ================= ROW ================= */
     .leaderboard-row {
