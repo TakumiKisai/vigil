@@ -34,7 +34,7 @@ body {
   transition: transform 0.25s ease;
 }
 
-/* ================= OUTER BORDER (NEON CHARGE RING) ================= */
+/* ================= OUTER BORDER (SLOW NEON GLOW) ================= */
 .liquid-glass-card::before {
   content: "";
   position: absolute;
@@ -44,15 +44,15 @@ body {
 
   background: linear-gradient(
     120deg,
-    rgba(255,255,255,0.25),
-    rgba(180,180,180,0.25),
-    rgba(255,0,170,0.85),
-    rgba(255,120,220,0.9),
-    rgba(255,255,255,0.2)
+    rgba(255,255,255,0.18),
+    rgba(140,140,140,0.18),
+    rgba(255,80,180,0.30),
+    rgba(255,160,210,0.20),
+    rgba(255,255,255,0.15)
   );
 
-  background-size: 350% 350%;
-  animation: outerCharge 3.5s linear infinite;
+  background-size: 200% 200%;
+  animation: slowFlow 10s ease-in-out infinite;
 
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
@@ -63,59 +63,27 @@ body {
   pointer-events: none;
 }
 
-/* OUTER ANIMATION */
-@keyframes outerCharge {
+/* slow smooth movement */
+@keyframes slowFlow {
   0% { background-position: 0% 50%; }
-  100% { background-position: 300% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* ================= INNER BORDER (TRUE FRAME + ANIMATED GRADIENT) ================= */
+/* ================= INNER BORDER (STATIC GLASS FRAME) ================= */
 .liquid-glass-card::after {
   content: "";
   position: absolute;
-  inset: 7px; /* makes it INSIDE → true inner border */
+  inset: 7px;
   border-radius: 22px;
 
-  padding: 2px;
-
-  background: linear-gradient(
-    135deg,
-    rgba(255,0,160,0.75),
-    rgba(255,255,255,0.18),
-    rgba(255,80,200,0.55),
-    rgba(255,0,160,0.6)
-  );
-
-  background-size: 300% 300%;
-  animation: innerShift 5s ease infinite;
-
-  /* IMPORTANT: makes it BORDER ONLY (not overlay) */
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 120, 200, 0.18);
 
   pointer-events: none;
 }
 
-/* INNER GRADIENT ANIMATION */
-@keyframes innerShift {
-  0% {
-    background-position: 0% 50%;
-    opacity: 0.65;
-  }
-  50% {
-    background-position: 100% 50%;
-    opacity: 1;
-  }
-  100% {
-    background-position: 0% 50%;
-    opacity: 0.65;
-  }
-}
-
-/* ================= CONTENT LAYER ================= */
+/* ================= CONTENT ABOVE LAYERS ================= */
 .liquid-glass-card > * {
   position: relative;
   z-index: 2;
@@ -123,11 +91,11 @@ body {
 
 /* ================= HOVER ================= */
 .liquid-glass-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
 .liquid-glass-card:hover::before {
-  filter: brightness(1.8) saturate(1.6);
+  filter: brightness(1.15);
 }
 
 /* ================= ROW ================= */
