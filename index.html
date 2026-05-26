@@ -1,328 +1,492 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" c"width=device-width, initial-scale=1.0">
-  <title>Leaderboard Preview</title>
-  
-  <!-- Style Block for animations, backgrounds, and liquid glass styles -->
-  <style>
-    /* Full-screen dark container locked down for previewing contrast */
-    body {
-      background-color: #0d0d0e; 
-      margin: 0;
-      padding: 40px 20px;
-      min-height: 100vh;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    @keyframes pulseGlow {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(252, 194, 215, 0.4);
-      }
-      50% {
-        transform: scale(1.02);
-        box-shadow: 0 0 20px 8px rgba(252, 194, 215, 0.35);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(252, 194, 215, 0);
-      }
-    }
+<title>Liquid Glass Sidebar</title>
 
-    /* Dark Plum Liquid Glass Style */
-    .liquid-glass-card {
-      background: linear-gradient(
-        145px, 
-        rgba(38, 30, 34, 0.88) 0%, 
-        rgba(20, 16, 18, 0.94) 50%, 
-        rgba(10, 8, 9, 0.98) 100%
-      );
-      backdrop-filter: blur(30px) saturate(140%);
-      -webkit-backdrop-filter: blur(30px) saturate(140%);
-      border: 1px solid rgba(252, 194, 215, 0.22); 
-      box-shadow: 
-        inset 0 1px 3px rgba(255, 255, 255, 0.15), 
-        inset 0 -3px 20px rgba(0, 0, 0, 0.7),
-        0px 20px 45px rgba(0, 0, 0, 0.8),
-        0px 0px 35px 5px rgba(252, 194, 215, 0.12);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      width: 100%;
-      max-width: 360px;
-      margin: 0 auto;
-      border-radius: 55px;
-      box-sizing: border-box;
-      color: #ffffff;
-      position: relative;
-      overflow: hidden;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    /* Soft pink sheen effect */
-    .liquid-glass-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 40%;
-      background: linear-gradient(to bottom, rgba(252, 194, 215, 0.08) 0%, rgba(252, 194, 215, 0) 100%);
-      pointer-events: none;
-    }
+<style>
 
-    /* Row layout transformed into an anchor-friendly block */
-    .leaderboard-row {
-      display: grid;
-      grid-template-columns: 165px 1fr;
-      align-items: center; 
-      gap: 15px; 
-      transition: all 0.3s ease;
-      cursor: pointer;
-      padding: 15px 10px; 
-      border-radius: 42px;
-      text-decoration: none; 
-      color: inherit;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-    .leaderboard-row:hover {
-      animation: pulseGlow 1.5s infinite ease-in-out;
-      background: rgba(252, 194, 215, 0.08);
-    }
+body{
+background:#0a0a0b;
+font-family:'Inter',sans-serif;
+display:flex;
+justify-content:center;
+padding:28px 14px;
+overflow-x:hidden;
+}
 
-    /* Single-graphic layout engine wrapper */
-    .text-container {
-      display: block;
-      line-height: 0;
-    }
+/* BACKGROUND */
 
-    .spotify-pulse {
-      transition: all 0.3s ease;
-    }
+body::before{
+content:'';
+position:fixed;
+inset:0;
 
-    .spotify-pulse:hover {
-      animation: pulseGlow 1.5s infinite ease-in-out;
-    }
-  </style>
+background:
+radial-gradient(circle at 20% 20%,rgba(255,180,220,.08),transparent 30%),
+radial-gradient(circle at 80% 10%,rgba(255,255,255,.04),transparent 25%),
+linear-gradient(180deg,#070708,#0d0d10,#070708);
+
+z-index:-3;
+}
+
+body::after{
+content:'';
+position:fixed;
+inset:0;
+
+background:
+repeating-linear-gradient(
+90deg,
+transparent 0px,
+transparent 38px,
+rgba(255,255,255,.015) 39px,
+transparent 40px
+);
+
+opacity:.55;
+
+animation:bgMove 12s linear infinite;
+
+z-index:-2;
+}
+
+@keyframes bgMove{
+from{transform:translateX(0);}
+to{transform:translateX(40px);}
+}
+
+/* WRAPPER */
+
+.sidebar{
+width:100%;
+max-width:340px;
+
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+/* CARD */
+
+.glass-card{
+
+position:relative;
+overflow:hidden;
+
+border-radius:34px;
+
+padding:18px;
+
+background:
+linear-gradient(
+145deg,
+rgba(30,24,28,.92),
+rgba(15,12,14,.96)
+);
+
+border:1px solid rgba(255,210,230,.12);
+
+backdrop-filter:blur(18px) saturate(140%);
+-webkit-backdrop-filter:blur(18px) saturate(140%);
+
+box-shadow:
+0 10px 35px rgba(0,0,0,.55),
+inset 0 1px 0 rgba(255,255,255,.05),
+0 0 25px rgba(255,180,220,.05);
+}
+
+/* SHINE */
+
+.glass-card::before{
+content:'';
+
+position:absolute;
+top:0;
+left:0;
+right:0;
+height:38%;
+
+background:
+linear-gradient(
+to bottom,
+rgba(255,255,255,.06),
+transparent
+);
+
+pointer-events:none;
+}
+
+/* HEADER */
+
+.hero{
+text-align:center;
+padding-top:6px;
+}
+
+.hero img{
+max-width:90%;
+height:auto;
+display:block;
+margin:auto;
+}
+
+/* TITLE */
+
+.section-title{
+font-size:11px;
+font-weight:800;
+letter-spacing:2px;
+text-transform:uppercase;
+color:#ffdae8;
+
+margin-bottom:12px;
+
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.section-title::before{
+content:'';
+width:8px;
+height:8px;
+border-radius:50%;
+
+background:#ffd5e7;
+
+box-shadow:
+0 0 10px rgba(255,210,230,.9);
+}
+
+/* LEADERBOARD */
+
+.lb-wrap{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.lb-row{
+
+display:grid;
+grid-template-columns:78px 1fr;
+gap:12px;
+
+align-items:center;
+
+padding:10px;
+
+border-radius:22px;
+
+transition:.2s ease;
+
+text-decoration:none;
+color:#fff;
+
+background:
+linear-gradient(
+145deg,
+rgba(255,255,255,.03),
+rgba(255,255,255,.015)
+);
+
+border:1px solid rgba(255,255,255,.05);
+}
+
+.lb-row:hover{
+
+transform:translateY(-2px);
+
+background:
+linear-gradient(
+145deg,
+rgba(255,255,255,.07),
+rgba(255,255,255,.03)
+);
+
+border-color:rgba(255,220,235,.18);
+
+box-shadow:
+0 0 18px rgba(255,180,220,.12);
+}
+
+/* PFP */
+
+.lb-pfp{
+width:78px;
+height:78px;
+
+border-radius:20px;
+
+object-fit:cover;
+
+border:2px solid rgba(255,210,230,.28);
+
+box-shadow:
+0 4px 12px rgba(0,0,0,.35);
+}
+
+/* TEXT */
+
+.lb-name{
+font-size:14px;
+font-weight:800;
+color:#fff;
+
+line-height:1.2;
+}
+
+.lb-rank{
+font-size:11px;
+font-weight:700;
+letter-spacing:1px;
+text-transform:uppercase;
+
+color:#ffbfd8;
+
+margin-bottom:5px;
+}
+
+/* PLAYLIST CARD */
+
+.playlist-card{
+text-align:center;
+}
+
+.playlist-image{
+
+width:100%;
+border-radius:26px;
+
+overflow:hidden;
+
+display:block;
+
+border:1px solid rgba(255,210,230,.16);
+
+box-shadow:
+0 8px 24px rgba(0,0,0,.45);
+
+transition:.22s ease;
+}
+
+.playlist-image:hover{
+
+transform:translateY(-3px) scale(1.01);
+
+box-shadow:
+0 0 25px rgba(255,180,220,.15),
+0 12px 30px rgba(0,0,0,.5);
+}
+
+.playlist-image img{
+width:100%;
+display:block;
+object-fit:cover;
+}
+
+/* USERNAME */
+
+.playlist-user{
+
+margin-top:12px;
+
+display:inline-block;
+
+font-size:13px;
+font-weight:700;
+
+color:#ffd4e6;
+
+text-decoration:none;
+
+transition:.18s ease;
+}
+
+.playlist-user:hover{
+opacity:.8;
+}
+
+/* FOOTER */
+
+.footer{
+text-align:center;
+
+font-size:10px;
+font-weight:700;
+letter-spacing:2px;
+text-transform:uppercase;
+
+color:#6e6570;
+
+margin-top:2px;
+}
+
+</style>
 </head>
+
 <body>
 
-  <!-- ================= CARD 1: LEADERBOARD ================= -->
-  <div class="liquid-glass-card" style="padding: 35px 18px;">
+<div class="sidebar">
 
-    <!-- Header Section with Image Font -->
-    <div style="text-align: center; margin-bottom: 25px; position: relative; z-index: 1;">
-      <div style="margin: 5px 0;">
-        <img src="top_chads_header.png" alt="* Top Chads *" style="max-width: 90%; height: auto; display: inline-block; vertical-align: middle;">
-      </div>
-    </div>
+<!-- HERO -->
 
-    <!-- Leaderboard List -->
-    <div style="display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 1;">
+<div class="glass-card hero">
 
-      <!-- Rank 1 -->
-      <a href="https://tiktok.com" target="_blank" class="leaderboard-row">
-        <img src="1.png" alt="Zeta" style="width: 165px; height: 165px; border-radius: 42px; border: 2px solid rgba(252, 194, 215, 0.7); object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-        <div class="text-container">
-          <img src="name1.png" alt="1. Zeta" style="width: 100%; height: auto; max-height: 130px; object-fit: contain;">
-        </div>
-      </a>
+<img src="PASTE_TOP_IMAGE_URL_HERE">
 
-      <!-- Rank 2 -->
-      <a href="https://tiktok.com" target="_blank" class="leaderboard-row">
-        <img src="2.png" alt="vmog" style="width: 165px; height: 165px; border-radius: 42px; border: 2px solid rgba(252, 194, 215, 0.7); object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-        <div class="text-container">
-          <img src="name2.png" alt="2. vmog" style="width: 100%; height: auto; max-height: 130px; object-fit: contain;">
-        </div>
-      </a>
-
-      <!-- Rank 3 -->
-      <a href="https://tiktok.com" target="_blank" class="leaderboard-row">
-        <img src="3.png" alt="Derb" style="width: 165px; height: 165px; border-radius: 42px; border: 2px solid rgba(252, 194, 215, 0.7); object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-        <div class="text-container">
-          <img src="name3.png" alt="3. Derb" style="width: 100%; height: auto; max-height: 130px; object-fit: contain;">
-        </div>
-      </a>
-
-      <!-- Rank 4 -->
-      <a href="https://tiktok.com" target="_blank" class="leaderboard-row">
-        <img src="4.png" alt="Clav" style="width: 165px; height: 165px; border-radius: 42px; border: 2px solid rgba(252, 194, 215, 0.7); object-fit: cover; flex-shrink: 0; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-        <div class="text-container">
-          <img src="name4.png" alt="4. Clav" style="width: 100%; height: auto; max-height: 130px; object-fit: contain;">
-        </div>
-      </a>
-
-      <!-- Rank 5 -->
-      <a href="https://tiktok.com" target="_blank" class="leaderboard-row">
-        <img src="5.png" alt="C. R." style="width: 165px; height: 165px; border-radius: 42px; border: 2px solid rgba(252, 194, 215, 0.7); object-fit: cover; flex-shrink: 0; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-        <div class="text-container">
-          <img src="name5.png" alt="5. C. K." style="width: 100%; height: auto; max-height: 130px; object-fit: contain;">
-        </div>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- SPACE BETWEEN CARDS -->
-  <div style="height: 20px; font-size: 1px; line-height: 1px;">&nbsp;</div>
-<!-- ================= MAIN CORE STYLES ================= -->
-<style>
-  @keyframes pulseGlow {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(252, 194, 215, 0.4); }
-    50% { transform: scale(1.02); box-shadow: 0 0 20px 8px rgba(252, 194, 215, 0.35); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(252, 194, 215, 0); }
-  }
-
-  .liquid-glass-card {
-    background: linear-gradient(145px, rgba(38, 30, 34, 0.88) 0%, rgba(20, 16, 18, 0.94) 50%, rgba(10, 8, 9, 0.98) 100%);
-    backdrop-filter: blur(30px) saturate(140%);
-    -webkit-backdrop-filter: blur(30px) saturate(140%);
-    border: 1px solid rgba(252, 194, 215, 0.22); 
-    box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.15), inset 0 -3px 20px rgba(0, 0, 0, 0.7), 0px 20px 45px rgba(0, 0, 0, 0.8), 0px 0px 35px 5px rgba(252, 194, 215, 0.12);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    width: 100%;
-    max-width: 360px;
-    margin: 0 auto;
-    border-radius: 55px;
-    box-sizing: border-box;
-    color: #ffffff;
-    position: relative;
-    overflow: hidden;
-    padding: 35px 18px;
-  }
-
-  .liquid-glass-card::before {
-    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 40%;
-    background: linear-gradient(to bottom, rgba(252, 194, 215, 0.08) 0%, rgba(252, 194, 215, 0) 100%);
-    pointer-events: none;
-  }
-
-  .leaderboard-row {
-    display: grid; 
-    grid-template-columns: 165px 1fr; 
-    align-items: center; 
-    gap: 15px; 
-    transition: all 0.3s ease; 
-    padding: 15px 10px; 
-    border-radius: 42px;
-  }
-
-  .leaderboard-row:hover {
-    animation: pulseGlow 1.5s infinite ease-in-out;
-    background: rgba(252, 194, 215, 0.08);
-  }
-
-  .text-container { 
-    display: block; 
-    line-height: 0; 
-  }
-  
-  .text-link, .image-link {
-    display: inline-block;
-    width: 100%;
-    text-decoration: none;
-    border: none;
-  }
-
-  .spotify-pulse { transition: all 0.3s ease; display: inline-block; border-radius: 32px; overflow: hidden; }
-  .spotify-pulse:hover { animation: pulseGlow 1.5s infinite ease-in-out; }
-</style>
-
-<!-- ================= CARD 1: LEADERBOARD ================= -->
-<div class="liquid-glass-card">
-  <div style="text-align: center; margin-bottom: 25px; position: relative; z-index: 1;">
-    <div style="margin: 5px 0;">
-      <img src="PASTE_TOP_CHADS_HEADER_URL_HERE" alt="* Top Chads *" style="max-width: 90%; height: auto; display: inline-block; vertical-align: middle;">
-    </div>
-  </div>
-
-  <div style="display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 1;">
-    
-    <!-- Rank 1 -->
-    <div class="leaderboard-row">
-      <a href="https://tiktok.com" target="_blank" class="image-link" style="width: 165px; height: 165px;">
-        <img src="PASTE_1_PNG_URL_HERE" alt="Zeta" style="width: 165px; height: 165px; border-radius: 42px; border: 2px solid rgba(252, 194, 215, 0.7); object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-      </a>
-      <div class="text-container">
-        <a href="https://tiktok.com" target="_blank" class="text-link">
-          <img src="PASTE_NAME1_PNG_URL_HERE" alt="1. Zeta" style="width: 100%; height: auto; max-height: 130px; object-fit: contain;">
-        </a>
-      </div>
-    </div>
-
-    <!-- Rank 2 -->
-    <div class="leaderboard-row">
-      <a href="https://tiktok.com" target="_blank" class="image-link" style="width: 165px; height: 165px;">
-        <img src="PASTE_2_PNG_URL_HERE" alt="vmog" style="width: 165px; height: 165px; border-radius: 42px; border: 2px solid rgba(252, 194, 215, 0.7); object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-      </a>
-      <div class="text-container">
-        <a href="https://tiktok.com" target="_blank" class="text-link">
-          <img src="PASTE_NAME2_PNG_URL_HERE" alt="2. vmog" style="width: 100%; height: auto; max-height: 130px; object-fit: contain;">
-        </a>
-      </div>
-    </div>
-
-    <!-- Rank 3 -->
-    <div class="leaderboard-row">
-      <a href="https://tiktok.com" target="_blank" class="image-link" style="width: 165px; height: 165px;">
-        <img src="PASTE_3_PNG_URL_HERE" alt="Derb" style="width: 165px; height: 165px; border-radius: 42px; border: 2px solid rgba(252, 194, 215, 0.7); object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-      </a>
-      <div class="text-container">
-        <a href="https://tiktok.com" target="_blank" class="text-link">
-          <img src="PASTE_NAME3_PNG_URL_HERE" alt="3. Derb" style="width: 100%; height: auto; max-height: 130px; object-fit: contain;">
-        </a>
-      </div>
-    </div>
-
-    <!-- Rank 4 -->
-    <div class="leaderboard-row">
-      <a href="https://tiktok.com" target="_blank" class="image-link" style="width: 165px; height: 165px;">
-        <img src="PASTE_4_PNG_URL_HERE" alt="Clav" style="width: 165px; height: 165px; border-radius: 42px; border: 2px solid rgba(252, 194, 215, 0.7); object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-      </a>
-      <div class="text-container">
-        <a href="https://tiktok.com" target="_blank" class="text-link">
-          <img src="PASTE_NAME4_PNG_URL_HERE" alt="4. Clav" style="width: 100%; height: auto; max-height: 130px; object-fit: contain;">
-        </a>
-      </div>
-    </div>
-
-    <!-- Rank 5 -->
-    <div class="leaderboard-row">
-      <a href="https://tiktok.com" target="_blank" class="image-link" style="width: 165px; height: 165px;">
-        <img src="PASTE_5_PNG_URL_HERE" alt="C. R." style="width: 165px; height: 165px; border-radius: 42px; border: 2px solid rgba(252, 194, 215, 0.7); object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-      </a>
-      <div class="text-container">
-        <a href="https://tiktok.com" target="_blank" class="text-link">
-          <img src="PASTE_NAME5_PNG_URL_HERE" alt="5. C. K." style="width: 100%; height: auto; max-height: 130px; object-fit: contain;">
-        </a>
-      </div>
-    </div>
-
-  </div>
 </div>
 
-<div style="height: 20px; font-size: 1px; line-height: 1px;">&nbsp;</div>
+<!-- LEADERBOARD -->
 
-<!-- ================= CARD 2: SPOTIFY PLAYLIST ================= -->
-<div class="liquid-glass-card" style="text-align: center;">
-  <div style="text-align: center; margin-bottom: 25px; position: relative; z-index: 1;">
-    <div style="margin: 5px 0;">
-      <img src="PASTE_7_PNG_URL_HERE" alt="BP Playlist" style="max-width: 90%; height: auto; display: inline-block; vertical-align: middle;">
-    </div>
-  </div>
+<div class="glass-card">
 
-  <div style="margin-bottom: 15px; position: relative; z-index: 1;">
-    <a href="https://spotify.com" target="_blank" class="spotify-pulse" style="text-decoration: none; border: 2px solid rgba(252, 194, 215, 0.7); box-shadow: 0 8px 20px rgba(0,0,0,0.4);">
-      <img src="PASTE_MIKAMI_WEBP_URL_HERE" alt="Playlist Cover" style="width: 260px; height: 260px; display: block; object-fit: cover;">
-    </a>
-  </div>
-
-  <div style="margin-top: 15px; position: relative; z-index: 1; line-height: 0;">
-    <img src="PASTE_8_PNG_URL_HERE" alt="by @svdstmusic" style="max-width: 45%; height: auto; display: inline-block; vertical-align: middle;">
-  </div>
+<div class="section-title">
+Top Chads
 </div>
 
- 
+<div class="lb-wrap">
+
+<!-- 1 -->
+
+<a href="https://tiktok.com" target="_blank" class="lb-row">
+
+<img src="1.png" class="lb-pfp">
+
+<div>
+
+<div class="lb-rank">
+#1
+</div>
+
+<div class="lb-name">
+Zeta
+</div>
+
+</div>
+
+</a>
+
+<!-- 2 -->
+
+<a href="https://tiktok.com" target="_blank" class="lb-row">
+
+<img src="2.png" class="lb-pfp">
+
+<div>
+
+<div class="lb-rank">
+#2
+</div>
+
+<div class="lb-name">
+vmog
+</div>
+
+</div>
+
+</a>
+
+<!-- 3 -->
+
+<a href="https://tiktok.com" target="_blank" class="lb-row">
+
+<img src="3.png" class="lb-pfp">
+
+<div>
+
+<div class="lb-rank">
+#3
+</div>
+
+<div class="lb-name">
+Derb
+</div>
+
+</div>
+
+</a>
+
+<!-- 4 -->
+
+<a href="https://tiktok.com" target="_blank" class="lb-row">
+
+<img src="4.png" class="lb-pfp">
+
+<div>
+
+<div class="lb-rank">
+#4
+</div>
+
+<div class="lb-name">
+Clav
+</div>
+
+</div>
+
+</a>
+
+<!-- 5 -->
+
+<a href="https://tiktok.com" target="_blank" class="lb-row">
+
+<img src="5.png" class="lb-pfp">
+
+<div>
+
+<div class="lb-rank">
+#5
+</div>
+
+<div class="lb-name">
+C. R.
+</div>
+
+</div>
+
+</a>
+
+</div>
+
+</div>
+
+<!-- PLAYLIST -->
+
+<div class="glass-card playlist-card">
+
+<div class="section-title">
+Playlist
+</div>
+
+<a href="https://spotify.com" target="_blank" class="playlist-image">
+
+<img src="PASTE_PLAYLIST_IMAGE_HERE">
+
+</a>
+
+<a href="https://spotify.com" target="_blank" class="playlist-user">
+@svdstmusic
+</a>
+
+</div>
+
+<div class="footer">
+Liquid Glass Interface
+</div>
+
+</div>
+
+</body>
+</html>
