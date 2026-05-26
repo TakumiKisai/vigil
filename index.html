@@ -26,15 +26,15 @@ body {
   padding: 20px;
   margin-bottom: 18px;
   color: white;
+
+  background: rgba(15, 15, 18, 0.72);
   overflow: hidden;
 
-  background: rgba(18, 18, 20, 0.65);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-
+  box-shadow: 0 12px 35px rgba(0,0,0,0.65);
   transition: transform 0.25s ease;
 }
 
-/* ================= OUTER BORDER (GREY → NEON CHARGE) ================= */
+/* ================= OUTER BORDER (NEON CHARGE RING) ================= */
 .liquid-glass-card::before {
   content: "";
   position: absolute;
@@ -45,13 +45,14 @@ body {
   background: linear-gradient(
     120deg,
     rgba(255,255,255,0.25),
-    rgba(120,120,120,0.25),
-    rgba(252,194,215,0.35),
+    rgba(180,180,180,0.25),
+    rgba(255,0,170,0.85),
+    rgba(255,120,220,0.9),
     rgba(255,255,255,0.2)
   );
 
-  background-size: 300% 300%;
-  animation: borderFlow 5s linear infinite;
+  background-size: 350% 350%;
+  animation: outerCharge 3.5s linear infinite;
 
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
@@ -63,39 +64,58 @@ body {
 }
 
 /* OUTER ANIMATION */
-@keyframes borderFlow {
+@keyframes outerCharge {
   0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+  100% { background-position: 300% 50%; }
 }
 
-/* ================= INNER BORDER (TRANSLUCENT PINK GLASS) ================= */
+/* ================= INNER BORDER (TRUE FRAME + ANIMATED GRADIENT) ================= */
 .liquid-glass-card::after {
   content: "";
   position: absolute;
-  inset: 6px;
+  inset: 7px; /* makes it INSIDE → true inner border */
   border-radius: 22px;
+
+  padding: 2px;
 
   background: linear-gradient(
     135deg,
-    rgba(252,194,215,0.10),
-    rgba(255,255,255,0.05),
-    rgba(252,194,215,0.08)
+    rgba(255,0,160,0.75),
+    rgba(255,255,255,0.18),
+    rgba(255,80,200,0.55),
+    rgba(255,0,160,0.6)
   );
 
-  background-size: 200% 200%;
-  animation: innerGlow 6s ease infinite;
+  background-size: 300% 300%;
+  animation: innerShift 5s ease infinite;
+
+  /* IMPORTANT: makes it BORDER ONLY (not overlay) */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
 
   pointer-events: none;
 }
 
-/* INNER ANIMATION */
-@keyframes innerGlow {
-  0% { background-position: 0% 50%; opacity: 0.7; }
-  50% { background-position: 100% 50%; opacity: 1; }
-  100% { background-position: 0% 50%; opacity: 0.7; }
+/* INNER GRADIENT ANIMATION */
+@keyframes innerShift {
+  0% {
+    background-position: 0% 50%;
+    opacity: 0.65;
+  }
+  50% {
+    background-position: 100% 50%;
+    opacity: 1;
+  }
+  100% {
+    background-position: 0% 50%;
+    opacity: 0.65;
+  }
 }
 
-/* ================= CONTENT ABOVE LAYERS ================= */
+/* ================= CONTENT LAYER ================= */
 .liquid-glass-card > * {
   position: relative;
   z-index: 2;
@@ -107,10 +127,10 @@ body {
 }
 
 .liquid-glass-card:hover::before {
-  filter: brightness(1.6);
+  filter: brightness(1.8) saturate(1.6);
 }
 
-/* ================= ROWS ================= */
+/* ================= ROW ================= */
 .leaderboard-row {
   display: grid;
   grid-template-columns: 165px 1fr;
@@ -161,7 +181,6 @@ body {
 .spotify-cover:hover {
   transform: scale(1.02);
 }
-
 </style>
 </head>
 
@@ -174,29 +193,24 @@ body {
     <img src="header.png" style="max-width:90%;">
   </div>
 
-  <a class="leaderboard-row" href="https://www.tiktok.com/@zeta.psl" target="_blank">
+  <a class="leaderboard-row" href="https://www.tiktok.com" target="_blank">
     <img class="avatar" src="Zeta.png">
     <img class="name-img" src="zeta1.png">
   </a>
 
-  <a class="leaderboard-row" href="https://www.tiktok.com/@humblemogger" target="_blank">
+  <a class="leaderboard-row" href="https://www.tiktok.com" target="_blank">
     <img class="avatar" src="vmog.png">
     <img class="name-img" src="vmog1.png">
   </a>
 
-  <a class="leaderboard-row" href="https://www.tiktok.com/@derbforprez" target="_blank">
+  <a class="leaderboard-row" href="https://www.tiktok.com" target="_blank">
     <img class="avatar" src="Derb.png">
     <img class="name-img" src="derb1.png">
   </a>
 
-  <a class="leaderboard-row" href="https://www.tiktok.com/@clavicular" target="_blank">
+  <a class="leaderboard-row" href="https://www.tiktok.com" target="_blank">
     <img class="avatar" src="Clav.png">
     <img class="name-img" src="clav1.png">
-  </a>
-
-  <a class="leaderboard-row" href="https://www.tiktok.com/@unbancookie" target="_blank">
-    <img class="avatar" src="C.K.png">
-    <img class="name-img" src="C.K1.png">
   </a>
 
 </div>
@@ -209,7 +223,7 @@ body {
   </div>
 
   <div class="spotify-wrap">
-    <a href="https://open.spotify.com/playlist/1Il367YYJIwXrlpR7F0pPT" target="_blank">
+    <a href="https://open.spotify.com" target="_blank">
       <img class="spotify-cover" src="whoisthis.webp">
     </a>
   </div>
