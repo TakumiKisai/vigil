@@ -37,7 +37,15 @@ body {
   transition:0.35s ease;
 }
 
-/* INNER GLOW BORDER */
+.liquid-glass-card:hover {
+  border:1px solid rgba(252,194,215,0.75);
+  box-shadow:
+    0 0 25px rgba(252,194,215,0.18),
+    0 10px 35px rgba(0,0,0,0.6);
+  transform:translateY(-3px);
+}
+
+/* subtle inner glow */
 .liquid-glass-card::before {
   content:"";
   position:absolute;
@@ -51,59 +59,44 @@ body {
     rgba(255,255,255,0.03),
     rgba(252,194,215,0.06)
   );
+
   opacity:0.6;
 }
 
-/* HOVER NEON BORDER */
-.liquid-glass-card:hover {
-  border:1px solid rgba(252,194,215,0.75);
-  box-shadow:
-    0 0 25px rgba(252,194,215,0.18),
-    0 10px 35px rgba(0,0,0,0.6),
-    inset 0 0 0 1px rgba(252,194,215,0.12);
-  transform:translateY(-3px);
-}
-
-/* slow glow */
-@keyframes neonPulse {
-  0% { box-shadow:0 0 10px rgba(252,194,215,0.10); }
-  50% { box-shadow:0 0 22px rgba(252,194,215,0.18); }
-  100% { box-shadow:0 0 10px rgba(252,194,215,0.10); }
-}
-
-.liquid-glass-card:hover {
-  animation:neonPulse 2.8s infinite ease-in-out;
-}
-
-/* ================= ROW ================= */
+/* ================= STACKED ROW (FIX) ================= */
 .leaderboard-row {
-  display:grid;
-  grid-template-columns:165px 1fr;
+  display:flex;
+  flex-direction:column;
   align-items:center;
-  gap:12px;
-  padding:10px;
+  gap:8px;
+
+  padding:12px;
   border-radius:18px;
+
   text-decoration:none;
   color:white;
-  transition:0.2s ease;
+
+  transition:0.25s ease;
 }
 
 .leaderboard-row:hover {
-  background:rgba(252,194,215,0.07);
+  background:rgba(252,194,215,0.08);
+  transform:translateY(-2px);
 }
 
-/* ================= IMAGES ================= */
+/* avatar top */
 .avatar {
-  width:165px;
-  height:165px;
-  border-radius:20px;
+  width:140px;
+  height:140px;
+  border-radius:18px;
   object-fit:cover;
   border:1px solid rgba(255,255,255,0.12);
 }
 
+/* name below */
 .name-img {
-  width:100%;
-  max-height:120px;
+  width:90%;
+  max-height:60px;
   object-fit:contain;
 }
 
@@ -150,27 +143,27 @@ body {
     <img src="header.png" style="max-width:90%;">
   </div>
 
-  <a class="leaderboard-row" href="https://www.tiktok.com/@zeta.psl?_r=1&_t=ZT-96fB9SUEgFJ" target="_blank">
+  <a class="leaderboard-row" href="https://www.tiktok.com/@zeta.psl" target="_blank">
     <img class="avatar" src="Zeta.png">
     <img class="name-img" src="zeta1.png">
   </a>
 
-  <a class="leaderboard-row" href="https://www.tiktok.com/@humblemogger?_r=1&_t=ZT-96fBAOaZ4zF" target="_blank">
+  <a class="leaderboard-row" href="https://www.tiktok.com/@humblemogger" target="_blank">
     <img class="avatar" src="vmog.png">
     <img class="name-img" src="vmog1.png">
   </a>
 
-  <a class="leaderboard-row" href="https://www.tiktok.com/@derbforprez?_r=1&_t=ZT-96fB9WYFrmn" target="_blank">
+  <a class="leaderboard-row" href="https://www.tiktok.com/@derbforprez" target="_blank">
     <img class="avatar" src="Derb.png">
     <img class="name-img" src="derb1.png">
   </a>
 
-  <a class="leaderboard-row" href="https://www.tiktok.com/@clavicular?_r=1&_t=ZT-96fBA5sDmGL" target="_blank">
+  <a class="leaderboard-row" href="https://www.tiktok.com/@clavicular" target="_blank">
     <img class="avatar" src="Clav.png">
     <img class="name-img" src="clav1.png">
   </a>
 
-  <a class="leaderboard-row" href="https://www.tiktok.com/@unbancookie?_r=1&_t=ZT-96fBIRgn1Hq" target="_blank">
+  <a class="leaderboard-row" href="https://www.tiktok.com/@unbancookie" target="_blank">
     <img class="avatar" src="C.K.png">
     <img class="name-img" src="C.K1.png">
   </a>
