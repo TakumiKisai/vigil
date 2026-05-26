@@ -17,7 +17,7 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* ================= CARD ================= */
+/* ================= CARD BASE ================= */
 .liquid-glass-card {
   width: 100%;
   max-width: 380px;
@@ -25,7 +25,8 @@ body {
   position: relative;
   border-radius: 30px;
 
-  padding: 20px;
+  padding: 26px; /* space for inner border */
+
   margin-bottom: 18px;
 
   background: rgba(18, 18, 20, 0.72);
@@ -73,24 +74,25 @@ body {
   100% { background-position: 300% 50%; }
 }
 
-/* ================= INNER BORDER (PINK GLASS FLOW) ================= */
+/* ================= INNER BORDER (THICK + TRANSLUCENT PINK ANIMATION) ================= */
 .liquid-glass-card::after {
   content: "";
   position: absolute;
-  inset: 4px;
-  border-radius: 26px;
 
-  padding: 1px;
+  inset: 10px;              /* 👈 thickness of INNER border */
+  border-radius: 22px;
+
+  padding: 2px;
 
   background: linear-gradient(
     135deg,
     rgba(252,194,215,0.10),
-    rgba(252,194,215,0.35),
-    rgba(255,105,180,0.15),
+    rgba(252,194,215,0.40),
+    rgba(255,105,180,0.20),
     rgba(252,194,215,0.10)
   );
 
-  background-size: 200% 200%;
+  background-size: 250% 250%;
   animation: innerPinkFlow 6s ease-in-out infinite;
 
   -webkit-mask:
@@ -104,18 +106,18 @@ body {
 }
 
 @keyframes innerPinkFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* ================= CONTENT ABOVE EVERYTHING ================= */
+/* ================= CONTENT ABOVE LAYERS ================= */
 .liquid-glass-card > * {
   position: relative;
   z-index: 3;
 }
 
-/* ================= HOVER ================= */
+/* ================= HOVER EFFECT ================= */
 .liquid-glass-card:hover {
   transform: translateY(-3px);
 }
@@ -133,7 +135,7 @@ body {
     rgba(255,105,180,0.0)
   );
 
-  filter: drop-shadow(0 0 10px rgba(255,105,180,0.8))
+  filter: drop-shadow(0 0 10px rgba(255,105,180,0.85))
           drop-shadow(0 0 22px rgba(252,194,215,0.6));
 }
 
