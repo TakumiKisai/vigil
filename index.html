@@ -28,7 +28,6 @@ body {
   background:rgba(18,18,20,0.65);
   overflow:hidden;
 
-  /* OUTER BORDER (default grey) */
   border:1px solid rgba(255,255,255,0.10);
 
   box-shadow:
@@ -38,7 +37,7 @@ body {
   transition:0.35s ease;
 }
 
-/* INNER SOFT BORDER GLOW (does NOT cover content) */
+/* INNER GLOW BORDER */
 .liquid-glass-card::before {
   content:"";
   position:absolute;
@@ -52,12 +51,10 @@ body {
     rgba(255,255,255,0.03),
     rgba(252,194,215,0.06)
   );
-
   opacity:0.6;
-  filter:blur(0.5px);
 }
 
-/* HOVER STATE = NEON PINK BORDER */
+/* HOVER NEON BORDER */
 .liquid-glass-card:hover {
   border:1px solid rgba(252,194,215,0.75);
   box-shadow:
@@ -67,10 +64,10 @@ body {
   transform:translateY(-3px);
 }
 
-/* slow neon breathing glow */
+/* slow glow */
 @keyframes neonPulse {
-  0%   { box-shadow:0 0 10px rgba(252,194,215,0.10); }
-  50%  { box-shadow:0 0 22px rgba(252,194,215,0.18); }
+  0% { box-shadow:0 0 10px rgba(252,194,215,0.10); }
+  50% { box-shadow:0 0 22px rgba(252,194,215,0.18); }
   100% { box-shadow:0 0 10px rgba(252,194,215,0.10); }
 }
 
@@ -153,28 +150,27 @@ body {
     <img src="header.png" style="max-width:90%;">
   </div>
 
-  <!-- ROWS -->
-  <a class="leaderboard-row" href="https://tiktok.com" target="_blank">
+  <a class="leaderboard-row" href="https://www.tiktok.com/@zeta.psl?_r=1&_t=ZT-96fB9SUEgFJ" target="_blank">
     <img class="avatar" src="Zeta.png">
     <img class="name-img" src="zeta1.png">
   </a>
 
-  <a class="leaderboard-row" href="https://tiktok.com" target="_blank">
+  <a class="leaderboard-row" href="https://www.tiktok.com/@humblemogger?_r=1&_t=ZT-96fBAOaZ4zF" target="_blank">
     <img class="avatar" src="vmog.png">
     <img class="name-img" src="vmog1.png">
   </a>
 
-  <a class="leaderboard-row" href="https://tiktok.com" target="_blank">
+  <a class="leaderboard-row" href="https://www.tiktok.com/@derbforprez?_r=1&_t=ZT-96fB9WYFrmn" target="_blank">
     <img class="avatar" src="Derb.png">
     <img class="name-img" src="derb1.png">
   </a>
 
-  <a class="leaderboard-row" href="https://tiktok.com" target="_blank">
+  <a class="leaderboard-row" href="https://www.tiktok.com/@clavicular?_r=1&_t=ZT-96fBA5sDmGL" target="_blank">
     <img class="avatar" src="Clav.png">
     <img class="name-img" src="clav1.png">
   </a>
 
-  <a class="leaderboard-row" href="https://tiktok.com" target="_blank">
+  <a class="leaderboard-row" href="https://www.tiktok.com/@unbancookie?_r=1&_t=ZT-96fBIRgn1Hq" target="_blank">
     <img class="avatar" src="C.K.png">
     <img class="name-img" src="C.K1.png">
   </a>
@@ -189,7 +185,7 @@ body {
   </div>
 
   <div class="spotify-wrap">
-    <a href="https://open.spotify.com" target="_blank">
+    <a href="https://open.spotify.com/playlist/1Il367YYJIwXrlpR7F0pPT?si=26aKOx0iS6GqEu6kQwI7Og&pi=FNFxcGwRTomYc" target="_blank">
       <img class="spotify-cover" src="whoisthis.webp">
     </a>
   </div>
