@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Top Chads + Playlist</title>
+<title>vigil</title>
 
 <style>
-
-/* ================= BODY ================= */
 body {
   background-color: #0d0d0e;
   margin: 0;
@@ -34,14 +32,14 @@ body {
 
   background: rgba(18, 18, 20, 0.72);
 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-
   overflow: hidden;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
 
   transition: 0.25s ease;
 }
 
-/* ================= OUTER GREY BORDER ================= */
+/* ================= OUTER CHARGING BORDER ================= */
 .liquid-glass-card::before {
   content: "";
   position: absolute;
@@ -49,7 +47,16 @@ body {
   border-radius: 28px;
   padding: 1px;
 
-  background: rgba(160,160,160,0.25);
+  background: linear-gradient(
+    90deg,
+    rgba(160,160,160,0.25),
+    rgba(252,194,215,0.35),
+    rgba(255,105,180,0.25),
+    rgba(160,160,160,0.25)
+  );
+
+  background-size: 300% 300%;
+  animation: borderFlow 4s linear infinite;
 
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
@@ -61,7 +68,12 @@ body {
   z-index: 1;
 }
 
-/* ================= INNER PINK BORDER ================= */
+@keyframes borderFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* ================= INNER GLASS BORDER ================= */
 .liquid-glass-card::after {
   content: "";
   position: absolute;
@@ -71,9 +83,9 @@ body {
 
   background: linear-gradient(
     145deg,
-    rgba(252,194,215,0.18),
-    rgba(252,194,215,0.55),
-    rgba(252,194,215,0.18)
+    rgba(252,194,215,0.10),
+    rgba(252,194,215,0.30),
+    rgba(252,194,215,0.10)
   );
 
   -webkit-mask:
@@ -85,10 +97,10 @@ body {
   pointer-events: none;
   z-index: 2;
 
-  transition: 0.25s ease;
+  transition: 0.3s ease;
 }
 
-/* ================= HOVER ================= */
+/* ================= HOVER NEON ================= */
 .liquid-glass-card:hover {
   transform: translateY(-3px);
 }
@@ -97,15 +109,15 @@ body {
   background: linear-gradient(
     145deg,
     rgba(255,105,180,0.0),
-    rgba(255,105,180,0.95),
+    rgba(255,105,180,0.9),
     rgba(255,105,180,0.0)
   );
 
-  filter: drop-shadow(0 0 10px rgba(255,105,180,0.85))
-          drop-shadow(0 0 18px rgba(252,194,215,0.6));
+  filter: drop-shadow(0 0 10px rgba(255,105,180,0.8))
+          drop-shadow(0 0 20px rgba(252,194,215,0.6));
 }
 
-/* ================= CONTENT LAYER ================= */
+/* CONTENT ABOVE LAYERS */
 .liquid-glass-card > * {
   position: relative;
   z-index: 3;
@@ -134,7 +146,7 @@ body {
   height: 165px;
   border-radius: 20px;
   object-fit: cover;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.12);
 }
 
 .name-img {
@@ -155,125 +167,70 @@ body {
   height: 260px;
   object-fit: cover;
   border-radius: 24px;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.12);
   transition: 0.25s ease;
 }
 
 .spotify-cover:hover {
   transform: scale(1.02);
 }
-
-/* ================= GEM SEPARATOR ================= */
-.gem-separator {
-  width: 100%;
-  max-width: 380px;
-  display: flex;
-  justify-content: center;
-  margin: 16px 0;
-}
-
-.gem {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-
-  background: linear-gradient(
-    45deg,
-    #ffffff,
-    #ff7ac6,
-    #ff3d9a,
-    #ffffff
-  );
-
-  background-size: 300% 300%;
-
-  animation:
-    gemSpin 2.5s linear infinite,
-    gemGradient 3s ease-in-out infinite;
-
-  box-shadow:
-    0 0 10px rgba(255,105,180,0.6),
-    0 0 20px rgba(252,194,215,0.4);
-}
-
-@keyframes gemSpin {
-  0% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(180deg) scale(1.3); }
-  100% { transform: rotate(360deg) scale(1); }
-}
-
-@keyframes gemGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- ================= GEM TOP ================= -->
-<div class="gem-separator"><div class="gem"></div></div>
-
-<!-- ================= TOP CHADS ================= -->
+<!-- ================= LEADERBOARD ================= -->
 <div class="liquid-glass-card">
 
-<div style="text-align:center; margin-bottom:15px;">
-  <img src="header.png" style="max-width:90%;">
+  <div style="text-align:center; margin-bottom:15px;">
+    <img src="header.png" style="max-width:90%;">
+  </div>
+
+  <a class="leaderboard-row" href="https://www.tiktok.com/@zeta.psl" target="_blank">
+    <img class="avatar" src="Zeta.png">
+    <img class="name-img" src="zeta1.png">
+  </a>
+
+  <a class="leaderboard-row" href="https://www.tiktok.com/@humblemogger" target="_blank">
+    <img class="avatar" src="vmog.png">
+    <img class="name-img" src="vmog1.png">
+  </a>
+
+  <a class="leaderboard-row" href="https://www.tiktok.com/@derbforprez" target="_blank">
+    <img class="avatar" src="Derb.png">
+    <img class="name-img" src="derb1.png">
+  </a>
+
+  <a class="leaderboard-row" href="https://www.tiktok.com/@clavicular" target="_blank">
+    <img class="avatar" src="Clav.png">
+    <img class="name-img" src="clav1.png">
+  </a>
+
+  <a class="leaderboard-row" href="https://www.tiktok.com/@unbancookie" target="_blank">
+    <img class="avatar" src="C.K.png">
+    <img class="name-img" src="C.K1.png">
+  </a>
+
 </div>
-
-<a class="leaderboard-row" href="https://www.tiktok.com/@zeta.psl" target="_blank">
-  <img class="avatar" src="Zeta.png">
-  <img class="name-img" src="zeta1.png">
-</a>
-
-<a class="leaderboard-row" href="https://www.tiktok.com/@humblemogger" target="_blank">
-  <img class="avatar" src="vmog.png">
-  <img class="name-img" src="vmog1.png">
-</a>
-
-<a class="leaderboard-row" href="https://www.tiktok.com/@derbforprez" target="_blank">
-  <img class="avatar" src="Derb.png">
-  <img class="name-img" src="derb1.png">
-</a>
-
-<a class="leaderboard-row" href="https://www.tiktok.com/@clavicular" target="_blank">
-  <img class="avatar" src="Clav.png">
-  <img class="name-img" src="clav1.png">
-</a>
-
-<a class="leaderboard-row" href="https://www.tiktok.com/@unbancookie" target="_blank">
-  <img class="avatar" src="C.K.png">
-  <img class="name-img" src="C.K1.png">
-</a>
-
-</div>
-
-<!-- ================= GEM BETWEEN ================= -->
-<div class="gem-separator"><div class="gem"></div></div>
 
 <!-- ================= SPOTIFY ================= -->
 <div class="liquid-glass-card" style="text-align:center;">
 
-<div style="margin-bottom:15px;">
-  <img src="playlist.png" style="max-width:85%;">
-</div>
+  <div style="margin-bottom:15px;">
+    <img src="playlist.png" style="max-width:85%;">
+  </div>
 
-<div class="spotify-wrap">
-  <a href="https://open.spotify.com/playlist/1Il367YYJIwXrlpR7F0pPT" target="_blank">
-    <img class="spotify-cover" src="whoisthis.webp">
-  </a>
-</div>
+  <div class="spotify-wrap">
+    <a href="https://open.spotify.com/playlist/1Il367YYJIwXrlpR7F0pPT" target="_blank">
+      <img class="spotify-cover" src="whoisthis.webp">
+    </a>
+  </div>
 
-<div style="margin-top:10px;">
-  <img src="svdst.png" style="width:90px; opacity:0.7;">
-</div>
+  <div style="margin-top:10px;">
+    <img src="svdst.png" style="width:90px; opacity:0.7;">
+  </div>
 
 </div>
-
-<!-- ================= GEM BOTTOM ================= -->
-<div class="gem-separator"><div class="gem"></div></div>
 
 </body>
 </html>
