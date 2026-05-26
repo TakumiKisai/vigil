@@ -43,21 +43,16 @@ body {
   z-index: 0;
 }
 
-/* ================= GRADIENT BORDER ================= */
+/* ================= OUTER GREY BORDER ================= */
 .liquid-glass-card::before {
   content: "";
   position: absolute;
   inset: 0;
-  padding: 1px;
   border-radius: 28px;
 
-  background: linear-gradient(
-    145deg,
-    rgba(255,255,255,0.28),
-    rgba(252,194,215,0.35),
-    rgba(120,120,120,0.18),
-    rgba(0,0,0,0.45)
-  );
+  padding: 1px;
+
+  background: rgba(160,160,160,0.25);
 
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
@@ -66,36 +61,49 @@ body {
   mask-composite: exclude;
 
   pointer-events: none;
+
   z-index: 1;
 }
 
-/* ================= INNER GLOW ================= */
+/* ================= INNER ANIMATED BORDER ================= */
+@keyframes borderGlow {
+  0% { background: rgba(252,194,215,0.12); }
+  50% { background: rgba(252,194,215,0.28); }
+  100% { background: rgba(252,194,215,0.12); }
+}
+
 .liquid-glass-card::after {
   content: "";
   position: absolute;
-  inset: 0;
-  border-radius: 28px;
+  inset: 2px;
+  border-radius: 26px;
 
-  background: radial-gradient(
-    circle at center,
-    rgba(255,255,255,0.05),
-    rgba(0,0,0,0.35)
-  );
+  background: rgba(252,194,215,0.15);
+
+  animation: borderGlow 4s ease-in-out infinite;
+
+  filter: blur(6px);
+  opacity: 0.9;
 
   pointer-events: none;
 
-  z-index: 0;
+  z-index: 2;
 }
 
 /* ================= CONTENT ABOVE LAYERS ================= */
 .liquid-glass-card > * {
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 /* ================= HOVER EFFECT ================= */
 .liquid-glass-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+}
+
+.liquid-glass-card:hover::after {
+  filter: blur(8px);
+  background: rgba(252,194,215,0.35);
 }
 
 /* ================= ROW ================= */
