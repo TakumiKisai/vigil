@@ -1,116 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>I'm being held hostage</title>
-
+<!-- ================= GOOGLE FONT ================= -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+/* ================= BODY ================= */
 
 body{
-background:#0a0a0b;
-font-family:'Inter',sans-serif;
-display:flex;
-justify-content:center;
-padding:28px 14px;
-overflow-x:hidden;
-}
-
-/* BACKGROUND */
-
-body::before{
-content:'';
-position:fixed;
-inset:0;
-
-background:
-radial-gradient(circle at 20% 20%,rgba(255,180,220,.08),transparent 30%),
-radial-gradient(circle at 80% 10%,rgba(255,255,255,.04),transparent 25%),
-linear-gradient(180deg,#070708,#0d0d10,#070708);
-
-z-index:-3;
-}
-
-body::after{
-content:'';
-position:fixed;
-inset:0;
-
-background:
-repeating-linear-gradient(
-90deg,
-transparent 0px,
-transparent 38px,
-rgba(255,255,255,.015) 39px,
-transparent 40px
-);
-
-opacity:.55;
-
-animation:bgMove 12s linear infinite;
-
-z-index:-2;
-}
-
-@keyframes bgMove{
-from{transform:translateX(0);}
-to{transform:translateX(40px);}
-}
-
-/* WRAPPER */
-
-.sidebar{
-width:100%;
-max-width:340px;
-
+background:#0d0d0e;
+margin:0;
+padding:40px 20px;
+min-height:100vh;
+box-sizing:border-box;
 display:flex;
 flex-direction:column;
-gap:18px;
+justify-content:flex-start;
+align-items:center;
+font-family:'Inter',sans-serif;
 }
 
-/* CARD */
+/* ================= ANIMATIONS ================= */
 
-.glass-card{
+@keyframes pulseGlow{
+0%{
+transform:scale(1);
+box-shadow:0 0 0 0 rgba(252,194,215,.35);
+}
+50%{
+transform:scale(1.02);
+box-shadow:0 0 28px 8px rgba(252,194,215,.22);
+}
+100%{
+transform:scale(1);
+box-shadow:0 0 0 0 rgba(252,194,215,0);
+}
+}
 
-position:relative;
-overflow:hidden;
+/* ================= MAIN CARD ================= */
 
-border-radius:34px;
-
-padding:18px;
+.liquid-glass-card{
+width:100%;
+max-width:380px;
 
 background:
 linear-gradient(
 145deg,
-rgba(30,24,28,.92),
-rgba(15,12,14,.96)
+rgba(38,30,34,.92),
+rgba(18,15,18,.96),
+rgba(8,8,10,.99)
 );
 
-border:1px solid rgba(255,210,230,.12);
+border-radius:48px;
 
-backdrop-filter:blur(18px) saturate(140%);
--webkit-backdrop-filter:blur(18px) saturate(140%);
+padding:28px 18px;
+
+position:relative;
+overflow:hidden;
+
+border:1px solid rgba(252,194,215,.14);
+
+backdrop-filter:blur(24px) saturate(140%);
+-webkit-backdrop-filter:blur(24px) saturate(140%);
 
 box-shadow:
-0 10px 35px rgba(0,0,0,.55),
-inset 0 1px 0 rgba(255,255,255,.05),
-0 0 25px rgba(255,180,220,.05);
+inset 0 1px 2px rgba(255,255,255,.08),
+inset 0 -10px 25px rgba(0,0,0,.45),
+0 18px 45px rgba(0,0,0,.7),
+0 0 40px rgba(252,194,215,.08);
+
+color:white;
 }
 
-/* SHINE */
+/* top sheen */
 
-.glass-card::before{
+.liquid-glass-card::before{
 content:'';
-
 position:absolute;
 top:0;
 left:0;
@@ -120,373 +83,319 @@ height:38%;
 background:
 linear-gradient(
 to bottom,
-rgba(255,255,255,.06),
+rgba(252,194,215,.08),
 transparent
 );
 
 pointer-events:none;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 
-.hero{
+.card-header{
 text-align:center;
-padding-top:6px;
+margin-bottom:26px;
+position:relative;
+z-index:2;
 }
 
-.hero img{
-max-width:90%;
+.card-header img{
+max-width:92%;
 height:auto;
-display:block;
-margin:auto;
+display:inline-block;
 }
 
-/* TITLE */
+/* ================= TOP CHADS ROW ================= */
 
-.section-title{
-font-size:11px;
-font-weight:800;
-letter-spacing:2px;
-text-transform:uppercase;
-color:#ffdae8;
-
-margin-bottom:12px;
-
-display:flex;
-align-items:center;
-gap:8px;
-}
-
-.section-title::before{
-content:'';
-width:8px;
-height:8px;
-border-radius:50%;
-
-background:#ffd5e7;
-
-box-shadow:
-0 0 10px rgba(255,210,230,.9);
-}
-
-/* LEADERBOARD */
-
-.lb-wrap{
-display:flex;
-flex-direction:column;
-gap:10px;
-}
-
-.lb-row{
-
+.leaderboard-row{
 display:grid;
-grid-template-columns:78px 1fr;
-gap:12px;
+grid-template-columns:165px 1fr;
 
 align-items:center;
+gap:15px;
 
-padding:10px;
+padding:12px 10px;
+border-radius:34px;
 
-border-radius:22px;
+transition:.25s ease;
 
-transition:.2s ease;
-
-text-decoration:none;
-color:#fff;
-
-background:
-linear-gradient(
-145deg,
-rgba(255,255,255,.03),
-rgba(255,255,255,.015)
-);
-
-border:1px solid rgba(255,255,255,.05);
+position:relative;
+z-index:2;
 }
 
-.lb-row:hover{
+.leaderboard-row:hover{
+background:rgba(252,194,215,.06);
+animation:pulseGlow 1.5s infinite;
+}
 
-transform:translateY(-2px);
+/* ================= AVATAR ================= */
 
-background:
-linear-gradient(
-145deg,
-rgba(255,255,255,.07),
-rgba(255,255,255,.03)
-);
+.avatar-link{
+width:165px;
+height:165px;
 
-border-color:rgba(255,220,235,.18);
+display:block;
+flex-shrink:0;
+
+border-radius:38px;
+overflow:hidden;
+
+border:2px solid rgba(252,194,215,.65);
 
 box-shadow:
-0 0 18px rgba(255,180,220,.12);
+0 8px 22px rgba(0,0,0,.4),
+0 0 20px rgba(252,194,215,.08);
+
+transition:.25s ease;
 }
 
-/* PFP */
+.avatar-link:hover{
+transform:scale(1.03);
+}
 
-.lb-pfp{
-width:78px;
-height:78px;
-
-border-radius:20px;
-
+.avatar-link img{
+width:100%;
+height:100%;
 object-fit:cover;
-
-border:2px solid rgba(255,210,230,.28);
-
-box-shadow:
-0 4px 12px rgba(0,0,0,.35);
+display:block;
 }
 
-/* TEXT */
+/* ================= NAME IMAGE ================= */
 
-.lb-name{
-font-size:14px;
-font-weight:800;
-color:#fff;
-
-line-height:1.2;
+.name-link{
+display:block;
+text-decoration:none;
 }
 
-.lb-rank{
-font-size:11px;
-font-weight:700;
-letter-spacing:1px;
-text-transform:uppercase;
-
-color:#ffbfd8;
-
-margin-bottom:5px;
+.name-link img{
+width:100%;
+max-height:120px;
+object-fit:contain;
+display:block;
 }
 
-/* PLAYLIST CARD */
+/* ================= SPACING ================= */
+
+.space{
+height:20px;
+}
+
+/* ================= PLAYLIST CARD ================= */
 
 .playlist-card{
 text-align:center;
 }
 
-.playlist-image{
+/* playlist image */
 
-width:100%;
-border-radius:26px;
+.playlist-cover-link{
+display:inline-block;
 
+border-radius:38px;
 overflow:hidden;
 
-display:block;
-
-border:1px solid rgba(255,210,230,.16);
+border:2px solid rgba(252,194,215,.65);
 
 box-shadow:
-0 8px 24px rgba(0,0,0,.45);
+0 10px 30px rgba(0,0,0,.45),
+0 0 24px rgba(252,194,215,.08);
 
-transition:.22s ease;
+transition:.25s ease;
 }
 
-.playlist-image:hover{
-
-transform:translateY(-3px) scale(1.01);
-
-box-shadow:
-0 0 25px rgba(255,180,220,.15),
-0 12px 30px rgba(0,0,0,.5);
+.playlist-cover-link:hover{
+animation:pulseGlow 1.5s infinite;
+transform:scale(1.02);
 }
 
-.playlist-image img{
-width:100%;
+/* IMPORTANT */
+/* THIS MAKES IT BIG + SQUARE */
+
+.playlist-cover{
+width:290px;
+height:290px;
+
 display:block;
 object-fit:cover;
 }
 
-/* USERNAME */
+/* ================= QUOTE / TEXT BELOW IMAGE ================= */
 
-.playlist-user{
-
-margin-top:12px;
-
-display:inline-block;
-
-font-size:13px;
-font-weight:700;
-
-color:#ffd4e6;
-
-text-decoration:none;
-
-transition:.18s ease;
+.playlist-quote{
+margin-top:16px;
+position:relative;
+z-index:2;
 }
 
-.playlist-user:hover{
+.playlist-quote img{
+max-width:82%;
+height:auto;
+display:inline-block;
+}
+
+/* ================= SPOTIFY @ ================= */
+
+.spotify-at{
+margin-top:14px;
+font-size:13px;
+font-weight:700;
+letter-spacing:.5px;
+
+color:rgba(255,255,255,.78);
+}
+
+.spotify-at a{
+color:#fcbdd4;
+text-decoration:none;
+transition:.2s ease;
+}
+
+.spotify-at a:hover{
 opacity:.8;
 }
 
-/* FOOTER */
+/* ================= MOBILE ================= */
 
-.footer{
-text-align:center;
+@media(max-width:480px){
 
-font-size:10px;
-font-weight:700;
-letter-spacing:2px;
-text-transform:uppercase;
+.leaderboard-row{
+grid-template-columns:135px 1fr;
+gap:12px;
+}
 
-color:#6e6570;
+.avatar-link{
+width:135px;
+height:135px;
+}
 
-margin-top:2px;
+.playlist-cover{
+width:250px;
+height:250px;
+}
+
 }
 
 </style>
-</head>
 
-<body>
+<!-- ================= TOP CHADS CARD ================= -->
 
-<div class="sidebar">
+<div class="liquid-glass-card">
 
-<!-- HERO -->
-
-<div class="glass-card hero">
-
-<img src="PASTE_TOP_IMAGE_URL_HERE">
-
+<div class="card-header">
+<img src="PASTE_TOP_HEADER_IMAGE_HERE">
 </div>
 
-<!-- LEADERBOARD -->
+<!-- ROW 1 -->
 
-<div class="glass-card">
+<div class="leaderboard-row">
 
-<div class="section-title">
-Top Chads
-</div>
-
-<div class="lb-wrap">
-
-<!-- 1 -->
-
-<a href="https://tiktok.com" target="_blank" class="lb-row">
-
-<img src="1.png" class="lb-pfp">
-
-<div>
-
-<div class="lb-rank">
-#1
-</div>
-
-<div class="lb-name">
-Zeta
-</div>
-
-</div>
-
+<a href="https://tiktok.com" target="_blank" class="avatar-link">
+<img src="PASTE_1_PNG_HERE">
 </a>
 
-<!-- 2 -->
-
-<a href="https://tiktok.com" target="_blank" class="lb-row">
-
-<img src="2.png" class="lb-pfp">
-
-<div>
-
-<div class="lb-rank">
-#2
-</div>
-
-<div class="lb-name">
-vmog
-</div>
-
-</div>
-
+<a href="https://tiktok.com" target="_blank" class="name-link">
+<img src="PASTE_NAME1_PNG_HERE">
 </a>
 
-<!-- 3 -->
-
-<a href="https://tiktok.com" target="_blank" class="lb-row">
-
-<img src="3.png" class="lb-pfp">
-
-<div>
-
-<div class="lb-rank">
-#3
 </div>
 
-<div class="lb-name">
-Derb
-</div>
+<!-- ROW 2 -->
 
-</div>
+<div class="leaderboard-row">
 
+<a href="https://tiktok.com" target="_blank" class="avatar-link">
+<img src="PASTE_2_PNG_HERE">
 </a>
 
-<!-- 4 -->
-
-<a href="https://tiktok.com" target="_blank" class="lb-row">
-
-<img src="4.png" class="lb-pfp">
-
-<div>
-
-<div class="lb-rank">
-#4
-</div>
-
-<div class="lb-name">
-Clav
-</div>
-
-</div>
-
+<a href="https://tiktok.com" target="_blank" class="name-link">
+<img src="PASTE_NAME2_PNG_HERE">
 </a>
 
-<!-- 5 -->
-
-<a href="https://tiktok.com" target="_blank" class="lb-row">
-
-<img src="5.png" class="lb-pfp">
-
-<div>
-
-<div class="lb-rank">
-#5
 </div>
 
-<div class="lb-name">
-C. R.
-</div>
+<!-- ROW 3 -->
+
+<div class="leaderboard-row">
+
+<a href="https://tiktok.com" target="_blank" class="avatar-link">
+<img src="PASTE_3_PNG_HERE">
+</a>
+
+<a href="https://tiktok.com" target="_blank" class="name-link">
+<img src="PASTE_NAME3_PNG_HERE">
+</a>
 
 </div>
 
+<!-- ROW 4 -->
+
+<div class="leaderboard-row">
+
+<a href="https://tiktok.com" target="_blank" class="avatar-link">
+<img src="PASTE_4_PNG_HERE">
+</a>
+
+<a href="https://tiktok.com" target="_blank" class="name-link">
+<img src="PASTE_NAME4_PNG_HERE">
+</a>
+
+</div>
+
+<!-- ROW 5 -->
+
+<div class="leaderboard-row">
+
+<a href="https://tiktok.com" target="_blank" class="avatar-link">
+<img src="PASTE_5_PNG_HERE">
+</a>
+
+<a href="https://tiktok.com" target="_blank" class="name-link">
+<img src="PASTE_NAME5_PNG_HERE">
 </a>
 
 </div>
 
 </div>
 
-<!-- PLAYLIST -->
+<div class="space"></div>
 
-<div class="glass-card playlist-card">
+<!-- ================= PLAYLIST CARD ================= -->
 
-<div class="section-title">
-Playlist
+<div class="liquid-glass-card playlist-card">
+
+<!-- TOP TITLE IMAGE -->
+
+<div class="card-header">
+<img src="PASTE_PLAYLIST_HEADER_IMAGE_HERE">
 </div>
 
-<a href="https://spotify.com" target="_blank" class="playlist-image">
+<!-- BIG PLAYLIST IMAGE -->
 
-<img src="PASTE_PLAYLIST_IMAGE_HERE">
+<a href="https://spotify.com" target="_blank" class="playlist-cover-link">
+
+<img
+src="PASTE_PLAYLIST_IMAGE_HERE"
+class="playlist-cover"
+alt="playlist">
 
 </a>
 
-<a href="https://spotify.com" target="_blank" class="playlist-user">
-@svdstmusic
+<!-- QUOTE / TEXT UNDER IMAGE -->
+
+<div class="playlist-quote">
+
+<img src="PASTE_QUOTE_IMAGE_HERE">
+
+</div>
+
+<!-- SPOTIFY @ -->
+
+<div class="spotify-at">
+
+<a href="https://spotify.com" target="_blank">
+@spotify
 </a>
 
 </div>
 
-<div class="footer">
-Liquid Glass Interface
 </div>
-
-</div>
-
-</body>
-</html>
